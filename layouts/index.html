@@ -1,29 +1,7 @@
 {{ define "main" }}
   <section class="hero">
-    {{/* Procedural motif, like everything in the game: a top-down car
-         mid-drift on an asphalt ribbon, laying a skid mark into the corner. */}}
-    <svg class="hero-icon" width="150" height="150" viewBox="0 0 150 150" role="img"
-         aria-label="Skid Jam motif: a car drifting through a corner">
-      <!-- asphalt corner -->
-      <path d="M18 118 Q18 40 96 40 L132 40 L132 74 L96 74 Q52 74 52 118 Z"
-            fill="var(--asphalt)"/>
-      <!-- kerb dashes on the inner edge -->
-      <path d="M52 118 Q52 74 96 74 L132 74" fill="none"
-            stroke="var(--kerb-red)" stroke-width="5" stroke-dasharray="9 9"
-            stroke-linecap="butt"/>
-      <!-- the skid mark curving out of the drift -->
-      <path d="M35 116 Q40 66 90 58" fill="none" stroke="var(--rubber)"
-            stroke-width="6" stroke-linecap="round" opacity="0.55"/>
-      <!-- the car, drifting: body angled across its travel -->
-      <g transform="translate(92 56) rotate(-28)">
-        <rect x="-13" y="-8" width="26" height="16" rx="7" fill="var(--accent)"/>
-        <rect x="-16" y="-10" width="7" height="5" rx="2" fill="var(--rubber)"/>
-        <rect x="9" y="-10" width="7" height="5" rx="2" fill="var(--rubber)"/>
-        <rect x="-16" y="5" width="7" height="5" rx="2" fill="var(--rubber)"/>
-        <rect x="9" y="5" width="7" height="5" rx="2" fill="var(--rubber)"/>
-        <circle cx="-2" cy="0" r="3.2" fill="var(--asphalt-deep)"/>
-      </g>
-    </svg>
+    <img class="hero-icon" src="/app-icon.png" width="150" height="150"
+         alt="Skid Jam app icon: a red car drifting through a kerbed corner">
 
     <h1 class="hero-title">Skid Jam</h1>
     <p class="hero-tagline">{{ .Site.Params.tagline }}</p>

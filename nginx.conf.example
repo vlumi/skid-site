@@ -7,14 +7,14 @@
 #
 # `root` points at the web root ITSELF — deploy.sh builds straight into it
 # (--cleanDestinationDir), there is no `public/` subdir. Keep this in step with
-# WEBROOT in deploy.sh (default /var/www/skid.misaki.fi).
+# WEBROOT in deploy.sh (default /var/www/skid).
 
 server {
     listen 80;
     listen [::]:80;
     server_name skid.misaki.fi;
 
-    root /var/www/skid.misaki.fi;
+    root /var/www/skid;
     index index.html;
 
     # Serve Hugo's custom 404 page for any miss — notably /t/<code> shared-track
