@@ -1,0 +1,116 @@
+/* Skid Jam — asphalt and kerbs. Dark track-grey with racing accents (kerb
+   red, kerb white, tyre-rubber black), like the game: procedural surfaces,
+   loud arcade colour, nothing decorative for its own sake. */
+
+:root {
+  --asphalt: #2c2f36;        /* the road surface */
+  --asphalt-deep: #14161a;   /* under the road — page background */
+  --grass: #2f5233;          /* the classic top-down green, used sparingly */
+  --ink: #f2f1ec;            /* text on dark */
+  --ink-soft: #a7a9ad;
+  --rule: #3a3d45;
+  --accent: #e2231a;         /* kerb red — the drift/racing accent */
+  --accent-bright: #ff5a2b;  /* hot hover */
+  --kerb-white: #f4f4f0;
+  --kerb-red: #e2231a;
+  --rubber: #0e0f12;
+}
+
+/* This site commits to the dark asphalt look on purpose — a night-race feel —
+   so there is no light-mode flip. */
+
+* { box-sizing: border-box; }
+html { font-size: 17px; }
+body {
+  margin: 0;
+  background:
+    /* faint lane-line texture down the middle of the "road" */
+    var(--asphalt-deep);
+  color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem 3rem; }
+
+/* Base link colour — the kerb red, loud on the dark asphalt. More specific
+   rules (nav, footer, brand, buttons) override it. */
+a { color: var(--accent); }
+a:hover { color: var(--accent-bright); }
+
+/* Header / footer */
+.site-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  max-width: 46rem; margin: 0 auto; padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+.brand { display: flex; align-items: center; gap: 0.5rem;
+  text-decoration: none; color: var(--ink); }
+.brand-mark { display: inline-flex; line-height: 0; }
+.brand-name { font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; }
+.site-nav a, .site-foot a {
+  color: var(--ink-soft); text-decoration: none; margin-left: 0.9rem;
+}
+.site-nav a:hover, .site-foot a:hover { color: var(--accent-bright); }
+.site-foot {
+  max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+.site-foot nav a:first-child { margin-left: 0; }
+.fine { color: var(--ink-soft); font-size: 0.85rem; }
+
+/* Hero */
+.hero { text-align: center; padding: 3rem 0 2rem; }
+.hero-icon {
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+}
+.hero-title {
+  font-size: 2.8rem; font-weight: 900; margin: 0.2rem 0;
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+.hero-tagline { color: var(--ink-soft); margin: 0.3rem 0 1rem; }
+.hero-lede { text-align: left; max-width: 36rem; margin: 0 auto 1.4rem; }
+.hero-soon { color: var(--ink-soft); }
+.hero-code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.8rem; letter-spacing: 0.2em; font-weight: 700;
+  color: var(--accent-bright);
+}
+.btn {
+  display: inline-block; padding: 0.65rem 1.6rem; border-radius: 999px;
+  background: var(--accent); color: var(--kerb-white); text-decoration: none;
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em;
+}
+.btn:hover { background: var(--accent-bright); color: var(--kerb-white); }
+
+/* Feature cards — like tiles of asphalt, with a kerb-coloured top edge that
+   lights up on hover. */
+.features {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.25rem; padding: 1.5rem 0;
+}
+.feature {
+  background: var(--asphalt); border-radius: 12px;
+  padding: 1.15rem 1.25rem 1.3rem;
+  border-top: 3px solid var(--rule);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.feature:hover { border-top-color: var(--accent); transform: translateY(-2px); }
+.feature h2 { font-size: 1.05rem; margin: 0 0 0.4rem; }
+.feature p { margin: 0; color: var(--ink-soft); }
+.feature strong { color: var(--ink); }
+
+/* Prose pages */
+.prose { max-width: 40rem; }
+.prose h1 { font-size: 1.9rem; font-weight: 900; text-transform: uppercase; }
+.prose h2 { font-size: 1.15rem; margin-top: 1.8rem; }
+.prose a { color: var(--accent); }
+.prose a:hover { color: var(--accent-bright); }
+.prose strong { color: var(--ink); }
+.prose code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  background: var(--asphalt); padding: 0.1em 0.4em; border-radius: 4px;
+  font-size: 0.9em;
+}

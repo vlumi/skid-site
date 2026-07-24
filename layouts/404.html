@@ -1,0 +1,38 @@
+{{ define "main" }}
+  <section class="hero">
+    {{/* Two messages: a /t/<code> path is a shared-track link opened without
+         the app (or in a browser, which can't play it); anything else is a
+         plain not-found. JS swaps in the track copy when the path matches; the
+         not-found copy is the no-JS / non-track default. */}}
+    <h1 class="hero-title" id="e-title">Page not found</h1>
+    <p class="hero-lede" id="e-lede">
+      That page isn’t here. It might be a Skid Jam track link — those open in
+      the app, not the browser.
+    </p>
+    <p class="hero-code" id="e-code" hidden></p>
+
+    {{ with .Site.Params.appStoreURL }}
+      <a class="btn btn-appstore" href="{{ . }}">Download on the App Store</a>
+    {{ else }}
+      <p class="hero-soon">Coming to the App Store.</p>
+    {{ end }}
+
+    <p class="hero-soon"><a href="/">Back to skid.misaki.fi</a></p>
+  </section>
+
+  <script>
+    // A /t/<code> URL is a shared track. If we're on one, reassure rather than
+    // "not found" — the link is fine, it just needs the app. Show the code so
+    // it can be typed into the app manually.
+    var m = location.pathname.match(/^\/t\/([0-9A-Za-z-]+)\/?$/);
+    if (m) {
+      document.getElementById("e-title").textContent = "Open this in Skid Jam";
+      document.getElementById("e-lede").textContent =
+        "This is a shared Skid Jam track. Open the link on a device with the " +
+        "app installed — or enter the code in the app to load the track.";
+      var code = document.getElementById("e-code");
+      code.textContent = m[1].toUpperCase();
+      code.hidden = false;
+    }
+  </script>
+{{ end }}

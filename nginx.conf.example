@@ -1,0 +1,47 @@
+# Example nginx server block for skid.misaki.fi.
+#
+# Start HTTP-only (port 80) so certbot can complete the ACME challenge; then run
+#   sudo certbot --nginx -d skid.misaki.fi
+# and certbot ADDS the `listen 443 ssl` block + the HTTP->HTTPS redirect for you.
+# Do NOT hand-write the 443 block.
+#
+# `root` points at the web root ITSELF — deploy.sh builds straight into it
+# (--cleanDestinationDir), there is no `public/` subdir. Keep this in step with
+# WEBROOT in deploy.sh (default /var/www/skid.misaki.fi).
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name skid.misaki.fi;
+
+    root /var/www/skid.misaki.fi;
+    index index.html;
+
+    # Serve Hugo's custom 404 page for any miss — notably /t/<code> shared-track
+    # links opened without the app (they have no file here; the page tells the
+    # visitor to open it in the app). Hugo builds 404.html at the web root.
+    error_page 404 /404.html;
+
+    # Apple App Site Association: no extension, served as JSON, NO redirect.
+    # Exact-match location so it wins over the dotfile deny and the try_files
+    # catch-all below. (Needed for the app's Universal Links; harmless before then.)
+    location = /.well-known/apple-app-site-association {
+        default_type application/json;
+    }
+
+    # Hugo emits clean directory URLs (/support/ -> /support/index.html).
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Fingerprinted CSS: filename changes on content change, so cache hard.
+    location /css/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Don't serve dotfiles — except the .well-known dir (matched exactly above).
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+}

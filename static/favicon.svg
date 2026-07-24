@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#14161a"/>
+  <!-- a skid mark curving into a checkered corner -->
+  <path d="M7 25 Q9 12 20 10" fill="none" stroke="#e2231a" stroke-width="3"
+        stroke-linecap="round" opacity="0.9"/>
+  <g fill="#f4f4f0">
+    <rect x="18" y="7" width="3.5" height="3.5"/><rect x="25" y="7" width="3.5" height="3.5"/>
+    <rect x="21.5" y="10.5" width="3.5" height="3.5"/>
+    <rect x="18" y="14" width="3.5" height="3.5"/><rect x="25" y="14" width="3.5" height="3.5"/>
+  </g>
+</svg>

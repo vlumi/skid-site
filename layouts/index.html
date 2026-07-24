@@ -1,0 +1,76 @@
+{{ define "main" }}
+  <section class="hero">
+    {{/* Procedural motif, like everything in the game: a top-down car
+         mid-drift on an asphalt ribbon, laying a skid mark into the corner. */}}
+    <svg class="hero-icon" width="150" height="150" viewBox="0 0 150 150" role="img"
+         aria-label="Skid Jam motif: a car drifting through a corner">
+      <!-- asphalt corner -->
+      <path d="M18 118 Q18 40 96 40 L132 40 L132 74 L96 74 Q52 74 52 118 Z"
+            fill="var(--asphalt)"/>
+      <!-- kerb dashes on the inner edge -->
+      <path d="M52 118 Q52 74 96 74 L132 74" fill="none"
+            stroke="var(--kerb-red)" stroke-width="5" stroke-dasharray="9 9"
+            stroke-linecap="butt"/>
+      <!-- the skid mark curving out of the drift -->
+      <path d="M35 116 Q40 66 90 58" fill="none" stroke="var(--rubber)"
+            stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+      <!-- the car, drifting: body angled across its travel -->
+      <g transform="translate(92 56) rotate(-28)">
+        <rect x="-13" y="-8" width="26" height="16" rx="7" fill="var(--accent)"/>
+        <rect x="-16" y="-10" width="7" height="5" rx="2" fill="var(--rubber)"/>
+        <rect x="9" y="-10" width="7" height="5" rx="2" fill="var(--rubber)"/>
+        <rect x="-16" y="5" width="7" height="5" rx="2" fill="var(--rubber)"/>
+        <rect x="9" y="5" width="7" height="5" rx="2" fill="var(--rubber)"/>
+        <circle cx="-2" cy="0" r="3.2" fill="var(--asphalt-deep)"/>
+      </g>
+    </svg>
+
+    <h1 class="hero-title">Skid Jam</h1>
+    <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+    <p class="hero-lede">
+      Phone flat on the table, one thumb each — up to four of you race a
+      top-down circuit at once. Point where you want to go and the car
+      <em>drifts</em> there, sliding through the corners without ever scrubbing
+      speed. Easy to pick up, a jam to master.
+    </p>
+    {{ with .Site.Params.appStoreURL }}
+      <a class="btn btn-appstore" href="{{ . }}">Download on the App Store</a>
+    {{ else }}
+      <p class="hero-soon">Coming to the App Store · in TestFlight beta now.</p>
+    {{ end }}
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h2>Couch multiplayer, one device</h2>
+      <p>2–4 players share the screen — thumbs at the edges, the track clear
+      in the middle. Sit side by side or across the table; each player's
+      controls rotate to face them. No second device, no network, no fuss.</p>
+    </div>
+    <div class="feature">
+      <h2>Drift, don't dab the brake</h2>
+      <p>The <strong>Casual</strong> scheme is aim-to-drive: push where you
+      want to go and the car flips into a drift, momentum carrying you round.
+      Prefer direct control? <strong>Pro</strong> gives you throttle and
+      steering — with the same drift on tap. Pick per player.</p>
+    </div>
+    <div class="feature">
+      <h2>Tracks with a top deck</h2>
+      <p>Ribbons of asphalt with kerbs, hazards, and <strong>two-layer</strong>
+      circuits — ramps launch you onto a bridge that crosses right over the
+      road below. Every corner is hand-tuned; every surface drawn procedurally,
+      no image assets anywhere.</p>
+    </div>
+    <div class="feature">
+      <h2>Chase the clock</h2>
+      <p><strong>Time trial</strong> pits you against your own best lap — a
+      translucent <strong>ghost</strong> of your record run drives alongside,
+      to out-brake and out-drift corner by corner.</p>
+    </div>
+    <div class="feature">
+      <h2>Yours, on your devices</h2>
+      <p>One free app for iPhone, iPad, and Mac. Best laps and ghosts stay on
+      your device. No ads, no accounts, no tracking — ever.</p>
+    </div>
+  </section>
+{{ end }}

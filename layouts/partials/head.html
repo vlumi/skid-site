@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $title := .Title }}
+{{ $siteTitle := .Site.Title }}
+<title>{{ if .IsHome }}{{ $siteTitle }} — {{ .Site.Params.tagline }}{{ else }}{{ $title }} · {{ $siteTitle }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.tagline }}{{ end }}">
+
+{{/* Asphalt-and-kerb styling, compiled + fingerprinted so nginx can cache it hard. */}}
+{{ with resources.Get "css/main.css" }}
+  {{ $css := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ end }}
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#14161a">
+
+{{/* Open Graph / social preview */}}
+<meta property="og:title" content="{{ $siteTitle }}">
+<meta property="og:description" content="{{ .Site.Params.tagline }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">

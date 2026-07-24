@@ -1,0 +1,28 @@
+baseURL: "https://skid.misaki.fi/"
+locale: "en-US"
+title: "Skid Jam"
+
+# Clean URLs; no taxonomies needed for a small support site.
+disableKinds:
+  - taxonomy
+  - term
+  - RSS
+
+params:
+  tagline: "A top-down, drift-happy couch racer for iPhone, iPad, and Mac."
+  # Filled in once the App Store listing is public.
+  appStoreURL: ""
+  supportEmail: ""
+  githubURL: "https://github.com/vlumi/skid"
+
+menu:
+  main:
+    - name: "How to play"
+      pageRef: "/how-to-play"
+      weight: 5
+    - name: "Support"
+      pageRef: "/support"
+      weight: 10
+    - name: "Privacy"
+      pageRef: "/privacy"
+      weight: 20

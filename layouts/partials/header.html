@@ -1,0 +1,21 @@
+<header class="site-head">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 8 8">
+        <rect width="8" height="8" fill="var(--kerb-white)"/>
+        <g fill="var(--asphalt-deep)">
+          <rect x="0" y="0" width="2" height="2"/><rect x="4" y="0" width="2" height="2"/>
+          <rect x="2" y="2" width="2" height="2"/><rect x="6" y="2" width="2" height="2"/>
+          <rect x="0" y="4" width="2" height="2"/><rect x="4" y="4" width="2" height="2"/>
+          <rect x="2" y="6" width="2" height="2"/><rect x="6" y="6" width="2" height="2"/>
+        </g>
+      </svg>
+    </span>
+    <span class="brand-name">Skid Jam</span>
+  </a>
+  <nav class="site-nav">
+    {{ range .Site.Menus.main }}
+      <a href="{{ .PageRef | relLangURL }}">{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</header>
